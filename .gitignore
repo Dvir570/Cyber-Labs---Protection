@@ -99,3 +99,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Personal information file
+Assignment 1 - Process Monitor/processList.txt
+Assignment 1 - Process Monitor/Status_Log.txt
