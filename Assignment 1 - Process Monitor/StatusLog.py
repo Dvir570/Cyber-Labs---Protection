@@ -2,14 +2,15 @@ import os
 import datetime
 from stat import S_IREAD, S_IRGRP, S_IROTH, S_IWUSR
 
-class ProcessLog:
+
+class StatusLog:
     __last_modified = None
     __prev_pids = []
 
     def get_file_name(self):
         return 'Status_Log.txt'
 
-    def write_process_log(self, current_psutil, current_time):
+    def write_status_log(self, current_psutil, current_time):
         new_processes = []
         killed_processes = []
         current_pids = current_psutil.pids()

@@ -1,7 +1,7 @@
 import time
 import psutil
 import ProcessList
-import ProcessLog
+import StatusLog
 import FilesHandler
 
 
@@ -17,7 +17,7 @@ class ProcessMonitor:
     def __init__(self, delay):
         self.__delay = delay
         self.__plist = ProcessList.ProcessList()
-        self.__plog = ProcessLog.ProcessLog()
+        self.__plog = StatusLog.StatusLog()
 
     def start_monitor(self):
         observer = FilesHandler.Observer()
@@ -27,7 +27,7 @@ class ProcessMonitor:
             current_time = time.ctime()
             current_psutil = psutil
             self.__plist.write_process_list(current_psutil, current_time)
-            self.__plog.write_process_log(current_psutil, current_time)
+            self.__plog.write_status_log(current_psutil, current_time)
             time.sleep(self.__delay)
 
 
