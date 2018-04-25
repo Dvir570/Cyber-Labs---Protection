@@ -1,7 +1,5 @@
-import psutil
-import time
-import datetime
 import os
+import datetime
 from stat import S_IREAD, S_IRGRP, S_IROTH, S_IWUSR
 
 
