@@ -1,4 +1,5 @@
 import time
+import thread
 import psutil
 import ProcessList
 import StatusLog
@@ -33,4 +34,5 @@ class ProcessMonitor:
 
 delay = input('Enter a time in seconds to sleep after samling: ')
 pm = ProcessMonitor(delay)
-pm.start_monitor()
+thread.start_new_thread(pm.start_monitor())
+thread.join()

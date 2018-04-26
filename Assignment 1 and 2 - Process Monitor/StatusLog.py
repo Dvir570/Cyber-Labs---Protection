@@ -28,17 +28,12 @@ class StatusLog:
         status_log_file = open(self.get_file_name(), 'a')
         status_log_file.write('-' * 100 + '\n')
         status_log_file.write(current_time + '\n\n')
-        print('New running processes:' + '\n')
         status_log_file.write('New running processes:' + '\n')
         for pid in new_processes:
-            print(str(pid))
             status_log_file.write(str(pid) + '\n')
-        print('\n' + 'Killed processes:' + '\n')
         status_log_file.write('\n' + 'Killed processes:' + '\n')
         for pid in killed_processes:
-            print(str(pid))
             status_log_file.write(str(pid) + '\n')
-        print('\n\n')
         status_log_file.write('\n\n')
         status_log_file.close()
         os.chmod(self.get_file_name(), S_IREAD | S_IRGRP | S_IROTH)
