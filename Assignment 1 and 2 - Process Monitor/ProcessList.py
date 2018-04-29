@@ -1,6 +1,7 @@
 import os
 import datetime
 import csv
+import psutil
 from stat import S_IREAD, S_IRGRP, S_IROTH, S_IWUSR
 
 
@@ -23,3 +24,13 @@ class ProcessList:
 
         os.chmod(self.get_file_name(), S_IREAD | S_IRGRP | S_IROTH)
         self.__last_modified = os.stat(self.get_file_name()).st_mtime
+
+    def get_sample_by_date(self, date):
+        sample = []
+        with open(self.get_file_name(), 'rb') as f:
+            mycsv = csv.reader(f)
+            mycsv = list(mycsv)
+            for row in mycsv:
+                if row[0] == date:
+                    sample.append(row[1])
+        return sample

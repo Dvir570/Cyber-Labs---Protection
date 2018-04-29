@@ -1,5 +1,6 @@
 import os
 import datetime
+import psutil
 from stat import S_IREAD, S_IRGRP, S_IROTH, S_IWUSR
 
 
@@ -10,16 +11,24 @@ class StatusLog:
     def get_file_name(self):
         return 'Status_Log.txt'
 
-    def write_status_log(self, current_psutil, current_time):
+    def get_new_running_process(self, pids_before, pids_after):
         new_processes = []
-        killed_processes = []
-        current_pids = current_psutil.pids()
-        for pid in self.__prev_pids:
-            if pid not in current_pids:
-                killed_processes.append(pid)
-        for pid in current_pids:
-            if pid not in self.__prev_pids:
+        for pid in pids_after:
+            if pid not in pids_before:
                 new_processes.append(pid)
+        return new_processes
+
+    def get_killed_process(self, pids_before, pids_after):
+        killed_processes = []
+        for pid in pids_before:
+            if pid not in pids_after:
+                killed_processes.append(pid)
+        return killed_processes
+
+    def write_status_log(self, current_psutil, current_time):
+        current_pids = current_psutil.pids()
+        killed_processes = self.get_killed_process(self.__prev_pids, current_pids)
+        new_processes = self.get_new_running_process(self.__prev_pids, current_pids)
         self.__prev_pids = current_pids
         if os.path.isfile(self.get_file_name()):
             if self.__last_modified != os.stat(self.get_file_name()).st_mtime:
