@@ -22,6 +22,9 @@ class MyHandler(PatternMatchingEventHandler):
     def on_moved(self, event):
             self.event_handler(event)
 
+    def on_modified(self, event):
+            self.event_handler(event)
+
     def on_created(self, event):
         self.event_handler(event)
 

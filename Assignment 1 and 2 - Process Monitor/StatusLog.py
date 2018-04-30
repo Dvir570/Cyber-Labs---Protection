@@ -5,7 +5,7 @@ from stat import S_IREAD, S_IRGRP, S_IROTH, S_IWUSR
 
 
 class StatusLog:
-    __last_modified = None
+    #__last_modified = None
     __prev_pids = []
 
     def get_file_name(self):
@@ -31,8 +31,8 @@ class StatusLog:
         new_processes = self.get_new_running_process(self.__prev_pids, current_pids)
         self.__prev_pids = current_pids
         if os.path.isfile(self.get_file_name()):
-            if self.__last_modified != os.stat(self.get_file_name()).st_mtime:
-                print(self.get_file_name() + ' modified at ' + str(datetime.datetime.fromtimestamp(os.path.getmtime(self.get_file_name()))))
+            #if self.__last_modified != os.stat(self.get_file_name()).st_mtime:
+             #   print(self.get_file_name() + ' modified at ' + str(datetime.datetime.fromtimestamp(os.path.getmtime(self.get_file_name()))))
             os.chmod(self.get_file_name(), S_IWUSR | S_IREAD)
         status_log_file = open(self.get_file_name(), 'a')
         status_log_file.write('-' * 100 + '\n')
@@ -46,4 +46,4 @@ class StatusLog:
         status_log_file.write('\n\n')
         status_log_file.close()
         os.chmod(self.get_file_name(), S_IREAD | S_IRGRP | S_IROTH)
-        self.__last_modified = os.stat(self.get_file_name()).st_mtime
+        #self.__last_modified = os.stat(self.get_file_name()).st_mtime
