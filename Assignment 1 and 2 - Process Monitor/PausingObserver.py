@@ -2,6 +2,8 @@ import time
 import contextlib
 import watchdog.observers
 
+PAUSED = False
+
 
 class PausingObserver(watchdog.observers.Observer):
     def dispatch_events(self, *args, **kwargs):
@@ -9,12 +11,14 @@ class PausingObserver(watchdog.observers.Observer):
             super(PausingObserver, self).dispatch_events(*args, **kwargs)
 
     def pause(self):
-        self._is_paused = True
+        global PAUSED
+        PAUSED = True
 
     def resume(self):
         time.sleep(self.timeout)  # allow interim events to be queued
         self.event_queue.queue.clear()
-        self._is_paused = False
+        global PAUSED
+        PAUSED = False
 
     @contextlib.contextmanager
     def ignore_events(self):

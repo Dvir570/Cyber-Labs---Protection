@@ -1,5 +1,5 @@
 import time
-from watchdog.observers import Observer
+import PausingObserver
 from watchdog.events import PatternMatchingEventHandler
 
 
@@ -20,9 +20,10 @@ class MyHandler(PatternMatchingEventHandler):
         print event.src_path, event.event_type, 'at', time.ctime()  # print now only for degug
 
     def on_moved(self, event):
-            self.event_handler(event)
+        self.event_handler(event)
 
     def on_modified(self, event):
+        if not PausingObserver.PAUSED:
             self.event_handler(event)
 
     def on_created(self, event):
