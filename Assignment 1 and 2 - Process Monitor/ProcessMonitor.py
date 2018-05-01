@@ -70,6 +70,7 @@ while again:
         pm = ProcessMonitor()
         thread.start_new_thread(pm.start_monitor(delay))
         again = False
+        thread.join()
     elif choose == 2:
         pm = ProcessMonitor()
         pm.samples_diff()
