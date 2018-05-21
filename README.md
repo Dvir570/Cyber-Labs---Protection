@@ -8,6 +8,6 @@ In addition to practical expertise, training increases organizational efficiency
 
 This training is designed to prepare and accustom the trainees in encountering complex cyber incidents, thus strengthening and increasing the efficiency of the defense array in the cyber field, as they experience situations taken from reality without the risks that are likely to occur in real-life conditions.
 
->Intro Video:
+>**Intro Video:**
 
 [![Intro Video](https://www.scoopnest.com/images/VideoPlayer_Blue.png)](https://www.youtube.com/watch?v=-XGmllWZ5g4)
