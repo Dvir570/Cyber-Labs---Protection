@@ -1,5 +1,5 @@
 ![alt text](https://www.msspalert.com/wp-content/uploads/2017/12/digital-service-provider-network-iot.jpg)
-# Cyber-Labs---Protection
+># Cyber-Labs---Protection
 
 The simulator constitutes practical training for cyber teams who deal with cyber warfare and defense, SOC information security experts, and network management and administrators. In **hands-on training** exercises, participants encounter advanced attack scenarios in a realistic and secure environment, under the guidance of our cyber experts.
 
